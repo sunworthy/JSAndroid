@@ -1,0 +1,50 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- saved from url=(0032)http://localhost:8080/jsandroid/ -->
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=100%; initial-scale=1.0; user-scalable=yes">
+<title>JS-Android Demo</title>
+<script type="text/javascript" language="javascript"> 
+	var domainName=window.Js_Android;//js android 桥接对象，与android mWebView.addJavascriptInterface(); 的对象名相对应
+	//js 调用java方法
+	function showHtmlFromJavaWithParam(){
+		var str = domainName.showHtmlFromJava("param from html");
+		alert(str);
+	}
+	//java 调用js
+	function callJsMethodFromJava(){
+		document.getElementById("id_input1").value = "Java call JS";
+	}
+	
+	function callJsMethodFromJavaWithParam(param ){
+		document.getElementById("id_input2").value = "Java call Html : " + param; 
+	}
+</script>
+</head>
+<body>
+<h1>This is a interactive demo of Js and Android </h1>
+<br/>
+<br/>
+<br>
+<input type="button" value="JsCallJavaMethod" onclick="window.Js_Android.JsCallJavaMethod();" />
+<br><br>
+<input type="button" value="showHtmlFromJavaWithParam" onclick="showHtmlFromJavaWithParam();" />
+<br><br>
+<input id="id_input1" style="width: 90%" type="text" value="" />
+<br>
+<input type="button" value="JavaCallJS" onclick="domainName.JavaCallJS();" />
+<br>
+<br>
+<br>
+
+<input id="id_input2" style="width: 90%" type="text" value="null" />
+<br>
+<input type="button" value="JavaCallJS2" onclick="domainName.JavaCallJS2()" />
+<br/>
+<input id="id_input3" style="width: 90%" type="text" value="null" />
+<br>
+<input type="button" value="JavaCallJS3" onclick="domainName.JavaCallJS3()" />
+</body>
+
+
+</html>
+
